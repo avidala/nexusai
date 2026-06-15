@@ -25,6 +25,9 @@ export default function AgentView() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
+  // the dispatch bar's live selection (model + working dir for the next dispatch);
+  // the header reflects this when no session is selected
+  const [dispatchSel, setDispatchSel] = useState({ model: DEFAULT_SETTINGS.model, workingDir: DEFAULT_SETTINGS.workingDir });
   // once a runner reports its real env, adopt its default model + first folder as
   // the defaults — but only until the user changes them (tracked by `touched`).
   const [touched, setTouched] = useState(false);
@@ -89,7 +92,7 @@ export default function AgentView() {
     <div className="relative flex flex-col h-screen bg-[#0a0b0e] text-white overflow-hidden">
       <AgentHeader
         sessions={sessions}
-        model={selectedSession?.model || settings.model}
+        model={selectedSession?.model || dispatchSel.model || settings.model}
         onOpenSettings={() => setSettingsOpen(true)}
       />
       {settingsOpen && (
@@ -134,6 +137,7 @@ export default function AgentView() {
             onDispatch={handleDispatch}
             environment={environment}
             defaults={{ model: settings.model, workingDir: settings.workingDir }}
+            onChange={setDispatchSel}
           />
         </div>
       </div>

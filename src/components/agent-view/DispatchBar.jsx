@@ -14,7 +14,7 @@ const SUGGESTIONS = [
 
 const modelLabel = (models, id) => models.find((m) => m.id === id)?.label ?? id;
 
-export default function DispatchBar({ onDispatch, environment, defaults }) {
+export default function DispatchBar({ onDispatch, environment, defaults, onChange }) {
   const models = environment?.models ?? [];
   const online = environment?.online;
 
@@ -29,6 +29,8 @@ export default function DispatchBar({ onDispatch, environment, defaults }) {
 
   useEffect(() => { if (defaults?.model) setModel(defaults.model); }, [defaults?.model]);
   useEffect(() => { if (defaults?.workingDir) setWorkingDir(defaults.workingDir); }, [defaults?.workingDir]);
+  // report the live selection up so the header chip reflects the next-dispatch model
+  useEffect(() => { onChange?.({ model, workingDir }); }, [model, workingDir, onChange]);
 
   const onBrowse = async () => { const p = await browse(); if (p) setWorkingDir(p); };
 
