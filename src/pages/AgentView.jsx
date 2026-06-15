@@ -92,7 +92,7 @@ export default function AgentView() {
     <div className="relative flex flex-col h-screen bg-[#0a0b0e] text-white overflow-hidden">
       <AgentHeader
         sessions={sessions}
-        model={selectedSession?.model || dispatchSel.model || settings.model}
+        model={dispatchSel.model || settings.model}
         onOpenSettings={() => setSettingsOpen(true)}
       />
       {settingsOpen && (
