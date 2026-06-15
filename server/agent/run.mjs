@@ -10,14 +10,17 @@ import { mockExecutor } from './executors/mock.mjs';
 
 const running = new Map(); // sessionId -> AbortController
 
+// default to claude-code (subscription, no API key). only use the API executor when
+// explicitly requested via NEXUS_EXECUTOR=claude — a stray ANTHROPIC_API_KEY in the
+// environment must not silently hijack the executor.
+export const executorName = process.env.NEXUS_EXECUTOR || 'claude-code';
+
 function makeExecutor() {
-  const choice = process.env.NEXUS_EXECUTOR || (process.env.ANTHROPIC_API_KEY ? 'claude' : 'claude-code');
-  if (choice === 'mock') return mockExecutor();
-  if (choice === 'claude') return claudeExecutor();
+  if (executorName === 'mock') return mockExecutor();
+  if (executorName === 'claude') return claudeExecutor();
   return claudeCodeExecutor();
 }
 const executor = makeExecutor();
-export const executorName = process.env.NEXUS_EXECUTOR || (process.env.ANTHROPIC_API_KEY ? 'claude' : 'claude-code');
 
 function pushSession(id) {
   broadcast({ entity: 'AgentSession', type: 'update', id, data: store.getSession(id) });
