@@ -7,6 +7,8 @@ entirely on your own machine. No cloud, no account, no sign-in.
 > One process serves the dashboard, stores everything in a local SQLite file, runs the
 > agents on your machine, and opens your browser. That's it.
 
+![NexusAI dashboard](./docs/screenshot.png)
+
 ---
 
 ## Features
@@ -29,6 +31,14 @@ entirely on your own machine. No cloud, no account, no sign-in.
 
 ## Quick start
 
+The fastest way (once published to npm):
+
+```sh
+npx nexusai
+```
+
+Or from source:
+
 ```sh
 git clone https://github.com/avidala/nexusai.git
 cd nexusai
@@ -37,7 +47,7 @@ npm run build
 npm start
 ```
 
-`npm start` launches the server on `http://localhost:4317` and opens your browser.
+Either way, the server starts on `http://localhost:4317` and opens your browser.
 Pick a folder, type a task, and dispatch.
 
 ## Development

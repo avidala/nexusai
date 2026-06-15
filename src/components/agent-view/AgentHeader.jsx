@@ -15,7 +15,7 @@ export default function AgentHeader({ sessions, model, onOpenSettings }) {
           <span className="font-semibold text-sm text-white tracking-tight">Claude Agents</span>
         </div>
         <div className="h-4 w-px bg-white/10" />
-        <span className="text-xs text-white/30 font-mono">v2.1.140</span>
+        <span className="text-xs text-white/30 font-mono">NexusAI</span>
       </div>
 
       <div className="flex items-center gap-4">

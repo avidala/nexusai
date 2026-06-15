@@ -1,6 +1,5 @@
 {
   "name": "nexusai",
-  "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
@@ -10,10 +9,15 @@
     "dev:server": "node server/index.mjs",
     "lint": "eslint . --quiet",
     "lint:fix": "eslint . --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.104.1",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
     "@hello-pangea/dnd": "^17.0.0",
     "@hookform/resolvers": "^4.1.2",
     "@radix-ui/react-accordion": "^1.2.3",
@@ -46,14 +50,25 @@
     "@stripe/react-stripe-js": "^3.0.0",
     "@stripe/stripe-js": "^5.2.0",
     "@tanstack/react-query": "^5.84.1",
+    "@types/node": "^22.13.5",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^6.0.2",
+    "autoprefixer": "^10.4.20",
+    "baseline-browser-mapping": "^2.8.32",
     "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.5.2",
-    "express": "^5.1.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "eslint-plugin-unused-imports": "^4.3.0",
     "framer-motion": "^11.16.4",
+    "globals": "^15.14.0",
     "html2canvas": "^1.4.1",
     "input-otp": "^1.4.2",
     "jspdf": "^4.2.1",
@@ -61,6 +76,7 @@
     "lucide-react": "^0.475.0",
     "moment": "^2.30.1",
     "next-themes": "^0.4.4",
+    "postcss": "^8.5.3",
     "react": "^18.2.0",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.2.0",
@@ -73,36 +89,46 @@
     "recharts": "^2.15.4",
     "sonner": "^2.0.1",
     "tailwind-merge": "^3.0.2",
+    "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.171.0",
-    "vaul": "^1.1.2",
-    "zod": "^3.24.2"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "@types/node": "^22.13.5",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
-    "@vitejs/plugin-react": "^6.0.2",
-    "autoprefixer": "^10.4.20",
-    "baseline-browser-mapping": "^2.8.32",
-    "eslint": "^9.19.0",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.18",
-    "eslint-plugin-unused-imports": "^4.3.0",
-    "globals": "^15.14.0",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17",
     "typescript": "^5.8.2",
-    "vite": "^8.0.16"
+    "vaul": "^1.1.2",
+    "vite": "^8.0.16",
+    "zod": "^3.24.2"
   },
   "description": "Local-first control panel for Claude Code agents — runs entirely on your machine.",
   "license": "MIT",
   "bin": {
+    "nexusai": "server/index.mjs",
     "nexus": "server/index.mjs"
   },
   "engines": {
     "node": ">=22.5"
-  }
+  },
+  "author": "Avner Vidal",
+  "homepage": "https://github.com/avidala/nexusai#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avidala/nexusai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/avidala/nexusai/issues"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "agents",
+    "ai",
+    "local-first",
+    "coding-agent",
+    "dashboard",
+    "cli"
+  ],
+  "files": [
+    "server",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
 }
