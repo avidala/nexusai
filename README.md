@@ -7,7 +7,7 @@ entirely on your own machine. No cloud, no account, no sign-in.
 > One process serves the dashboard, stores everything in a local SQLite file, runs the
 > agents on your machine, and opens your browser. That's it.
 
-![NexusAI dashboard](./docs/screenshot.png)
+![NexusAI demo](./docs/demo.gif)
 
 ---
 
