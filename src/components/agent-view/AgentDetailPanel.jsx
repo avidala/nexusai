@@ -141,7 +141,7 @@ export default function AgentDetailPanel({ session, onReply, onClose, onStop, on
       <div className="flex items-center gap-4 px-4 py-2 border-b border-white/[0.04] bg-white/[0.01] shrink-0 overflow-x-auto">
         <span className="text-[10px] text-white/20 font-mono shrink-0">{session.toolCallCount} tool calls</span>
         <span className="text-[10px] text-white/20 font-mono shrink-0">{session.model}</span>
-        {session.temperature !== undefined && (
+        {session.temperature != null && (
           <span className="text-[10px] text-white/20 font-mono shrink-0">t={session.temperature.toFixed(1)}</span>
         )}
         {session.maxTokens && (
